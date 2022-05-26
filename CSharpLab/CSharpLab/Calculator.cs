@@ -3,11 +3,8 @@ namespace CSharpLab;
 
 public class Calculator
 {
-    public int Add(ref int a, ref int b)
+    public int Add(int a, int b)
     {
-        a++;
-        b++;
-
         return a + b;
     }
 }

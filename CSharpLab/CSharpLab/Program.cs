@@ -11,7 +11,7 @@ Console.Write("Num2: ");
 b = int.Parse(Console.ReadLine()!);
 
 var c = new Calculator();
-var sum = c.Add(ref a, ref b);
+var sum = c.Add(a, b);
 
 Console.WriteLine("-----");
 
