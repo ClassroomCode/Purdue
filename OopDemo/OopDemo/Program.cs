@@ -1,5 +1,7 @@
 ﻿using OopDemo;
 
+var st = new SubThing();
+
 var people = new List<Person>() {
     new Customer { FirstName = "Bill", LastName = "Gates" },
     new Employee { FirstName ="Steve", LastName = "Jobs" }
