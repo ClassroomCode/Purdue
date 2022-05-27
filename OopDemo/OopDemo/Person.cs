@@ -2,11 +2,8 @@
 
 public class Person
 {
-    public string FirstName = string.Empty;
-    public string LastName = string.Empty;
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
 
-    public string FullName()
-    {
-        return $"{FirstName} {LastName}";
-    }
+    public virtual string FullName => $"{FirstName} {LastName}";
 }
