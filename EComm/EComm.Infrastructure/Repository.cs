@@ -10,6 +10,9 @@ public class Repository : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EComm;Integrated Security=True");
+        // base.OnConfiguring(optionsBuilder);
+        optionsBuilder
+            .UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EComm;Integrated Security=True")
+            .LogTo(Console.WriteLine);
     }
 }
