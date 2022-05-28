@@ -17,3 +17,4 @@ var products = from p in r.Products
 foreach (var p in products) {
     Console.WriteLine($"{p.Name} [{p.Price:C}]");
 }
+
