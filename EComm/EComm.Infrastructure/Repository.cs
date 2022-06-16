@@ -29,6 +29,18 @@ public class Repository : DbContext, IRepository
             .SingleOrDefaultAsync(p => p.Id == id);
     }
 
+    public async Task<IEnumerable<Supplier>> GetAllSuppliers()
+    {
+        return await Suppliers.AsNoTracking().ToListAsync();
+    }
+
+    public async Task SaveProduct(Product product)
+    {
+        var existingProduct = await Products.SingleOrDefaultAsync(p => p.Id == product.Id);
+        existingProduct.UnitPrice = product.UnitPrice;
+        await SaveChangesAsync();
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // base.OnConfiguring(optionsBuilder);
