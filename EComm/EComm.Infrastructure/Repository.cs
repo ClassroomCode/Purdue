@@ -24,7 +24,9 @@ public class Repository : DbContext, IRepository
 
     public async Task<Product?> GetProduct(int id)
     {
-        return await Products.SingleOrDefaultAsync(p => p.Id == id);
+        return await Products
+            .Include(p => p.Supplier)
+            .SingleOrDefaultAsync(p => p.Id == id);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
