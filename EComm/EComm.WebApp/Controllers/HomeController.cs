@@ -21,7 +21,7 @@ namespace EComm.WebApp.Controllers
         [HttpGet("")]
         public async Task<IActionResult> Index()
         {
-            var products = await _repository.GetAllProducts();
+            var products = await _repository.GetAllProducts(includeSuppliers: true);
 
             return View(products);
         }

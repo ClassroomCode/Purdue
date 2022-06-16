@@ -8,9 +8,18 @@ public class Repository : DbContext, IRepository
     public DbSet<Supplier> Suppliers => Set<Supplier>();
     public DbSet<Product> Products => Set<Product>();
 
-    public async Task<IEnumerable<Product>> GetAllProducts()
+    public async Task<IEnumerable<Product>> GetAllProducts(bool includeSuppliers = false)
     {
-        return await Products.ToListAsync();
+        return (includeSuppliers ?
+            await Products
+                .Include(p => p.Supplier)
+                .AsNoTracking()
+                .ToListAsync()
+            :
+            await Products
+                .AsNoTracking()
+                .ToListAsync()
+        );
     }
 
     public async Task<Product?> GetProduct(int id)
