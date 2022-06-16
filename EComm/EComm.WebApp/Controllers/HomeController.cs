@@ -1,6 +1,4 @@
-﻿using EComm.Core;
-using EComm.Infrastructure;
-using EComm.WebApp.Models;
+﻿using EComm.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

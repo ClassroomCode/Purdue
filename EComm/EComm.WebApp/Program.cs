@@ -1,4 +1,4 @@
-using EComm.Core;
+global using EComm.Core;
 using EComm.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
