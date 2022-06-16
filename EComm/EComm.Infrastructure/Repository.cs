@@ -3,10 +3,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EComm.Infrastructure;
 
-public class Repository : DbContext
+public class Repository : DbContext, IRepository
 {
     public DbSet<Supplier> Suppliers => Set<Supplier>();
     public DbSet<Product> Products => Set<Product>();
+
+    public async Task<IEnumerable<Product>> GetAllProducts()
+    {
+        return await Products.ToListAsync();
+    }
+
+    public async Task<Product?> GetProduct(int id)
+    {
+        return await Products.SingleOrDefaultAsync(p => p.Id == id);
+    }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

@@ -9,9 +9,9 @@ var products = r.Products.Where(p => p.UnitPrice > 20)
 
 /*
 var products = from p in r.Products
-               where p.UnitPrice > 20
-               orderby p.UnitPrice
-               select new { Name = p.ProductName, Price = p.UnitPrice };
+                where p.UnitPrice > 20
+                orderby p.UnitPrice
+                select new { Name = p.ProductName, Price = p.UnitPrice };
 */
 
 foreach (var p in products) {
