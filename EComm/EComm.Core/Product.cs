@@ -11,4 +11,6 @@ public class Product
     
     public int SupplierId { get; set; }
     public Supplier? Supplier { get; set; }
+
+    public string DisplayText => $"{ProductName} [{UnitPrice:C}]";
 }

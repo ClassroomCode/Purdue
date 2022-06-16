@@ -18,18 +18,15 @@ namespace EComm.WebApp.Controllers
             _logger = logger;
         }
 
-        // Interfaces
-        // Explicit Dependencies Principle
-        // Dependency Injection
-        // Program to an interface, not an implementation
-
+        [HttpGet("")]
         public async Task<IActionResult> Index()
         {
             var products = await _repository.GetAllProducts();
 
-            return Content($"Number of Products: {products.Count()}");
+            return View(products);
         }
 
+        [HttpGet("privacy")]
         public IActionResult Privacy()
         {
             return View();
