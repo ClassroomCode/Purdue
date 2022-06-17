@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EComm.WebAPI.Controllers
@@ -31,10 +32,12 @@ namespace EComm.WebAPI.Controllers
         }
 
         [HttpGet("product/{id}")]
+        [Authorize(Policy = "AdminsOnly")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetProduct(int id)
+        public async Task<IActionResult> GetProduct(int id,
+            [FromHeader(Name = "X-PSK")] string? psk = null)
         {
             /*
             int i;
