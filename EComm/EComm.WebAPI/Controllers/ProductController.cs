@@ -16,6 +16,18 @@ namespace EComm.WebAPI.Controllers
             _logger = logger;
         }
 
-        
+        [HttpGet("product")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllProducts()
+        {
+            var products = await _repository.GetAllProducts();
+            
+            /*
+            var retVal = products.Select(p => 
+                new { name = p.ProductName, price = p.UnitPrice });      
+            */
+
+            return Ok(products);
+        }
     }
 }
