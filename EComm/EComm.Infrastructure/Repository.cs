@@ -50,7 +50,7 @@ public class Repository : DbContext, IRepository
     {
         // base.OnConfiguring(optionsBuilder);
         optionsBuilder
-            .UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EComm;Integrated Security=True")
+            .UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EComm2;Integrated Security=True")
             .LogTo(Console.WriteLine);
     }
 }
