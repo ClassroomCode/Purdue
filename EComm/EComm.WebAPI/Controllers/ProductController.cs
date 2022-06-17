@@ -29,5 +29,24 @@ namespace EComm.WebAPI.Controllers
 
             return Ok(products);
         }
+
+        [HttpGet("product/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetProduct(int id)
+        {
+            /*
+            int i;
+            if (!int.TryParse(id, out i)) {
+                return BadRequest(new { Msg = "BAD ID" });
+            }
+            */
+
+            var product = await _repository.GetProduct(i);
+            if (product == null) return NotFound();
+
+            return Ok(product);
+        }
     }
 }
