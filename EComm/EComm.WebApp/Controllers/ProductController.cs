@@ -50,6 +50,13 @@ namespace EComm.WebApp.Controllers
         [HttpPost("product/edit/{id}")]
         public async Task<IActionResult> Edit(int id, ProductEditViewModel pvm)
         {
+            if (!ModelState.IsValid) {
+                var suppliers = await _repository.GetAllSuppliers();
+                pvm.SupplierList = suppliers.Select(s =>
+                    new SelectListItem(s.CompanyName, s.Id.ToString()));
+                return View(pvm);
+            }
+
             var product = new Product() {
                 Id = pvm.Id,
                 ProductName = pvm.ProductName,
