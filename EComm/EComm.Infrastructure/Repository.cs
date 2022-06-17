@@ -37,7 +37,12 @@ public class Repository : DbContext, IRepository
     public async Task SaveProduct(Product product)
     {
         var existingProduct = await Products.SingleOrDefaultAsync(p => p.Id == product.Id);
+        if (existingProduct == null) throw new ApplicationException();
+        existingProduct.ProductName = product.ProductName;
         existingProduct.UnitPrice = product.UnitPrice;
+        existingProduct.Package = product.Package;
+        existingProduct.IsDiscontinued = product.IsDiscontinued;
+        existingProduct.SupplierId = product.SupplierId;
         await SaveChangesAsync();
     }
 

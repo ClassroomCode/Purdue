@@ -58,7 +58,7 @@ namespace EComm.WebApp.Controllers
                 IsDiscontinued = pvm.IsDiscontinued,
                 SupplierId = pvm.SupplierId
             };
-            _repository.SaveProduct(product);
+            await _repository.SaveProduct(product);
 
             return RedirectToAction("Details", new { id = id });
         }
