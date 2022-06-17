@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EComm.WebApp.Models;
 
-public class ProductEditViewModel
+public class ProductEditViewModel : IValidatableObject
 {
     public int Id { get; set; }
 
@@ -19,5 +19,15 @@ public class ProductEditViewModel
 
     public int SupplierId { get; set; }
 
-    public IEnumerable<SelectListItem> SupplierList { get; set; }
+    public IEnumerable<SelectListItem> SupplierList { get; set; } = new List<SelectListItem>();
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        var retVal = new List<ValidationResult>();
+        if (ProductName.StartsWith("Q")) {
+            retVal.Add(new ValidationResult("Name can't start with Q", 
+              new List<string> { "ProductName" }));
+        }
+        return retVal;
+    }
 }
