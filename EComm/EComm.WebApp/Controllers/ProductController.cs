@@ -1,4 +1,5 @@
 ﻿using EComm.WebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -17,6 +18,7 @@ namespace EComm.WebApp.Controllers
         }
 
         [HttpGet("product/{id}")]
+        [Authorize(Policy = "AdminsOnly")]
         public async Task<IActionResult> Details(int id)
         {
             var product = await _repository.GetProduct(id);
