@@ -43,7 +43,7 @@ namespace EComm.WebAPI.Controllers
             }
             */
 
-            var product = await _repository.GetProduct(i);
+            var product = await _repository.GetProduct(id);
             if (product == null) return NotFound();
 
             return Ok(product);
