@@ -48,5 +48,16 @@ namespace EComm.WebAPI.Controllers
 
             return Ok(product);
         }
+
+        [HttpPatch("product/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateProduct(int id, Product product)
+        {
+            await _repository.SaveProduct(product);
+
+            //return NotContent(product);
+        }
     }
 }
